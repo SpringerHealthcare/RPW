@@ -1,0 +1,20 @@
+﻿@model SpringHealthOne.SpringWS.SavedSearchType[]
+<div class="saved-search-results">
+    @for (var i = 0; Model.Count() > i; i++ )
+    {
+        <div class="saved-search-row">
+            <div class="searchName">
+                @Model[i].searchName
+            </div>
+            <div class="fromDate">
+                @Model[i].fromDate
+            </div>
+            <div class="toDate">
+                @Model[i].toDate
+            </div>
+            <div class="search-again">
+                @Html.ActionLink("Search Again", "Search", "Home", new { search_id = @Model[i].searchId }, null)
+            </div>
+        </div>
+    }
+</div>

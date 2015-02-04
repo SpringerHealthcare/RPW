@@ -1,0 +1,14 @@
+﻿@model SpringHealthOne.Models.Search
+@using (Html.BeginForm("BasicSearch", "Home", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+{
+<div id="search-container">
+    <input type="text" id="freetext" name="freetext"/>    
+    <input type="submit" id="searchbutton" value="" />    
+</div>
+    @Html.ValidationMessage("freetext")
+
+}
+@if (Request.IsAuthenticated)
+            {   
+<div id="AdvancedSearchbtn"><a href="/Home/AdvancedSearch">Advanced Search</a></div>
+}

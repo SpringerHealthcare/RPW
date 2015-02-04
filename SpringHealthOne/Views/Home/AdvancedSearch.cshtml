@@ -1,0 +1,118 @@
+﻿@model SpringHealthOne.Models.Search
+@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+{
+    <div id="advancedsearch-container">
+        <div id="advancedsearch-inner">
+            <label for="advanceddrug">Drug: </label>@Html.TextBoxFor(model => model.drug, new { id = "advanceddrug" })
+            @Html.ValidationMessage("drug")
+            @Html.Label("Publication dates:")
+            @Html.DropDownListFor(model => model.ForMonth, Model.getMonths())
+            @Html.DropDownListFor(model => model.ForYears, Model.getYears())
+            @Html.Label("to")
+            @Html.DropDownListFor(model => model.ToMonth, Model.getMonths(true))
+            @Html.DropDownListFor(model => model.ToYears, Model.getYears(true))
+
+            <div id="AdvancedSearchfld">
+                @Html.Label("Product Type:")
+                <div class="radios">
+                    <label for="">All</label>
+                    @Html.RadioButton("prodtype", "All", true)
+                </div>
+                <div class="radios">
+                    <label for="">Journal Articles</label>
+                    @Html.RadioButton("prodtype", "Journal Articles") 
+                </div>
+                <div class="radios">
+                    <label for="">Books</label>
+                    @Html.RadioButton("prodtype", "Books") 
+                </div>
+                <div class="radios">
+                    <label for="">Anatomical Charts</label>
+                    @Html.RadioButton("prodtype", "Anatomical Charts") 
+                </div>
+                <div class="radios">
+                    <label for="">CME</label>
+                    @Html.RadioButton("prodtype", "CME") 
+                </div>
+          @*      <div class="radios journal">
+                    <label for="journal">Journal: </label>@Html.TextBoxFor(model => model.Journal, new { id = "journal" })
+                </div>*@
+                <div class="clear"></div>
+
+
+                <div class="advanced-left">
+                    <label for="journal">Journal: </label>@Html.TextBoxFor(model => model.Journal, new { id = "journal" })
+                    <label for="title">Title: </label>@Html.TextBoxFor(model => model.title, new { id = "title" })
+                    <label for="device">Device: </label>@Html.TextBoxFor(model => model.device, new { id = "device" })
+                    <label for="indication">Indication: </label>@Html.TextBoxFor(model => model.indication, new { id = "indication" })
+                    <label for="therapy">Therapy Area: </label>@Html.TextBoxFor(model => model.therapy, new { id = "therapy" })
+                    <label for="manufact">Manufacturer: </label>@Html.TextBoxFor(model => model.manufact, new { id = "manufact" })
+                </div>
+                <div class="advanced-right">
+                    <label for="author">Author: </label>@Html.TextBoxFor(model => model.author, new { id = "author" })
+                    <label for="doi">DOI: </label>@Html.TextBoxFor(model => model.doi, new { id = "doi" })
+                    <label for="pubmed">Pubmed ID: </label>@Html.TextBoxFor(model => model.pubmed, new { id = "pubmed" })
+                    <label for="citation">Citation: </label>@Html.TextBoxFor(model => model.citation, new { id = "citation" })
+                    <label for="sponsor">Sponsored by: </label>@Html.TextBoxFor(model => model.sponsor, new { id = "sponsor" })
+                </div>
+            </div>
+            @Html.Hidden("advanced", true)
+            <p>
+              <input type="submit" value="Search Now" class="update" />
+            </p>    
+        </div>
+    </div>
+}
+@section scripts {
+                    @Scripts.Render("~/bundles/modernizr")
+                    @Scripts.Render("~/bundles/jqueryval")
+                    @Scripts.Render("~/bundles/jqueryui")
+          
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#advanceddrug').autocomplete({
+                source: '@Url.Action("AutoComplete")'
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#device').autocomplete({
+                source: '@Url.Action("AutoCompleteDevices")'
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#journal').autocomplete({
+                source: '@Url.Action("AutoCompleteJournel")'
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#indication').autocomplete({
+                source: '@Url.Action("AutoCompleteIndications")'
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#therapy').autocomplete({
+                source: '@Url.Action("AutoCompleteTherapyAreas")'
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#manufact').autocomplete({
+                source: '@Url.Action("AutoCompleteManufacturers")'
+            });
+        })
+    </script>
+    }

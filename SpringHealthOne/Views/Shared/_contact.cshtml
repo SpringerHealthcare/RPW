@@ -1,0 +1,46 @@
+﻿@using SpringHealthOne.Models
+@model SpringHealthOne.Models.contactus
+@{
+    ViewBag.Title = "_contact";
+}
+
+<h2>Specific Enquires</h2>
+@using (Html.BeginForm("Contactus", "Home", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+{
+    @Html.Label("Enquiry / Request / Question:")
+    @Html.TextArea("enquiry")
+    <div class="left">
+        @Html.Label("Name:")
+        @Html.TextBox("name")
+        @Html.ValidationMessage("name")
+    </div>
+    <div class="right">
+    @Html.Label("Email:")
+    @Html.TextBox("email")
+    @Html.ValidationMessage("email")
+    </div>
+    <div class="clear"></div>
+    <div class="left">
+    @Html.Label("Telephone:")
+    @Html.TextBox("telephone")
+    @Html.ValidationMessage("telephone")
+    </div>
+
+    <div class="right">
+    @Html.Label("Company:")
+    @Html.TextBox("company")
+    @Html.ValidationMessage("company")
+    </div>
+    <div class="clear"></div>
+
+    <div class="left">
+    @Html.Label("Country:")
+    @Html.TextBox("country")
+    @Html.ValidationMessage("country")
+    </div>
+    @Html.Hidden("botpot")
+    <div class="right">
+    <input type="submit" value="Submit" class="submit go contact-submit" />
+    </div>
+    <div class="clear"></div>
+}

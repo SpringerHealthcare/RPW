@@ -1,0 +1,50 @@
+﻿@using SpringHealthOne.Models;
+@using SpringHealthOne.SpringWS;
+@model SpringHealthOne.SpringWS.SavedSearchesType
+@{
+    ViewBag.Title = "SavedSearch";
+}
+<h1>Account</h1>
+<p style="padding:0 20px;">This website is for pharmaceutical industry professionals only. All applications for membership will be assessed on an individual basis, to ensure the highest possible level of service for members. Registrations are usually approved within one or two working days. If you have any queries please contact the <script type="text/javascript">
+//<![CDATA[
+<!--
+var x="function f(x){var i,o=\"\",l=x.length;for(i=l-1;i>=0;i--) {try{o+=x.c" +
+"harAt(i);}catch(e){}}return o;}f(\")\\\"function f(x,y){var i,o=\\\"\\\\\\\""+
+"\\\\,l=x.length;for(i=0;i<l;i++){if(i<72)y++;y%=127;o+=String.fromCharCode(" +
+"x.charCodeAt(i)^(y++));}return o;}f(\\\"\\\\-$.:<6;#w,/6\\\\\\\\025\\\\\\\\" +
+"006\\\\\\\\t\\\\\\\\tAIQ\\\\\\\\016Q\\\\\\\\033\\\\\\\\007\\\\\\\\022\\\\\\" +
+"\\037F!\\\\\\\\\\\"\\\\oeod~c4xwubp\\\\\\\\177n0TJKTF^C@pADDQT[[2l')%q\\\\\\"+
+"\\016+>|\\\\\\\\022$971(\\\\\\\\034..-\\\\\\\\t\\\\\\\\017\\\\\\\\005\\\\\\" +
+"\\006\\\\\\\\026K\\\\\\\\005\\\\\\\\010\\\\\\\\005R\\\\\\\\034\\\\\\\\002\\" +
+"\\\\\\017\\\\\\\\031\\\\\\\\001\\\\\\\\035\\\\\\\\031\\\\\\\\020\\\\\\\\\\\\"+
+"\\\\\\\\\\\\004\\\\\\\\021\\\\\\\\020\\\\\\\\035\\\\\\\\0048\\\\\\\\n\\\\\\" +
+"\\n\\\\\\\\t\\\\\\\\025\\\\\\\\023\\\\\\\\031es,`khZ%(}c\\\\\\\\177`h3S2pv~" +
+"}{\\\\\\\\177dlk{osoB=\\\\\\\\036@FNMKOT\\\\\\\\\\\\\\\\[K_C_\\\\\\\\022\\\\"+
+"\\\\000Q\\\\\\\\017\\\\\\\\020\\\\\\\\032\\\\\\\\017\\\\\\\\005\\\\\\\\r\\\""+
+"\\\\,72)\\\"(f};)lo,0(rtsbus.o nruter};)i(tArahc.x=+o{)--i;0=>i;1-l=i(rof}}" +
+"{)e(hctac};l=+l;x=+x{yrt{)84=!)31/l(tAedoCrahc.x(elihw;lo=l,htgnel.x=lo,\\\""+
+"\\\"=o,i rav{)x(f noitcnuf\")"                                               ;
+while(x=eval(x));
+//-->
+//]]>
+</script>
+.</p>
+<div id="account-menu">
+    <ul>
+        <li><a href="/User/MyAccount">Personal Information</a></li>
+        <li><a href="/User/ChangePassword">Change Password</a></li>
+        <li><a href="/User/Favourites">Favourites</a></li>
+        <li><a href="/User/SavedSearch" class="active">Saved Searches</a></li>
+    </ul>
+</div>
+
+<div id="account-container">
+    <div id="account-inner">
+    <h2>Saved Search</h2>
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+{
+    @Html.EditorFor(model => model.savedSearchResults, "savedSearchresults")
+}
+<div class="clear"></div>
+	</div>
+</div>

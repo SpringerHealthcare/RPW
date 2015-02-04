@@ -1,0 +1,66 @@
+﻿@model SpringHealthOne.Models.requestQuoteObj
+        <div class="article-main">
+            <div class="article-title">
+                <h3>
+                    @Model.articleTitle
+                </h3>
+                <div class="quote-citation">
+                    @Model.citation
+                </div>
+                <div class="quote-author">
+                    @Model.author
+                </div>
+                <div class="quote-pub">
+                    @Model.pubdate
+                </div>
+                @Html.HiddenFor(modelItem => modelItem.articleId)
+<div class="left">
+                <div class="radios">
+                    @Html.LabelFor(m => m.quantities, "Quantities:")
+                    @Html.TextBoxFor(m => m.quantities)
+                </div>
+                <div class="clear"></div>
+                <div class="radios">
+                    @Html.LabelFor(m => m.destcountry, "Destination country:")
+                    @Html.TextBoxFor(m => m.destcountry)
+                </div>
+                <div class="clear"></div>
+                <div class="radios">
+                    @Html.LabelFor(m => m.specrequirements, "Special Requirements")
+                    @Html.TextAreaFor(m => m.specrequirements)
+                </div>
+                <div class="clear"></div>
+</div>
+<div class="right">                                
+                <div class="radios">
+                    @Html.LabelFor(m => m.englang, "English Language")
+                    @Html.CheckBoxFor(m => m.englang)               
+                </div>
+                <div class="radios">
+                    @Html.LabelFor(m => m.translang, "Translated")
+                    @Html.CheckBoxFor(m => m.translang)   
+                </div>
+                <div class="clear"></div>
+                 <div class="radios">
+                    @Html.LabelFor(m => m.quotecover, "Quote with covers")
+                    @Html.CheckBoxFor(m => m.quotecover) 
+                </div>
+                <div class="radios">
+                    @Html.LabelFor(m => m.quotenocover, "Quote without covers")
+                    @Html.CheckBoxFor(m => m.quotenocover)
+                </div>
+                <div class="radios">
+                    @Html.LabelFor(m => m.quotereprints, "Quote for reprints")
+                    @Html.CheckBoxFor(m => m.quotereprints) 
+                </div>
+                <div class="radios">
+                    @Html.LabelFor(m => m.quoteeprint, "Quote for ePrints")
+                    @Html.CheckBoxFor(m => m.quoteeprint) 
+                </div>
+                <div class="clear"></div>
+</div>               
+<div class="clear"></div> 
+                
+               
+            </div>
+        </div>

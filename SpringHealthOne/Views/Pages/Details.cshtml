@@ -1,0 +1,46 @@
+﻿@using SpringHealthOne.Models
+@model SpringHealthOne.Models.Page
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.MetaTitle = Model.MetaTitle;
+    ViewBag.Keywords = Model.Keywords;
+}
+
+
+    
+    <div class="display-field" id=" page_@Model.SystemName">
+        @if (Model.SystemName == "home")
+        {
+            <div id="home-book">&nbsp; </div>
+        }
+        @if(Model.PageHeading!=""){
+        <h1>@Model.PageHeading</h1>
+        }
+        <div class="section group">
+             
+
+<div class="col col1">
+        @Html.Raw(Model.PageBodyColumn1)
+    </div>
+
+
+<div class="col col2">
+
+        @Html.Raw(Model.PageBodyColumn2)
+    </div>
+
+<div class="col col3">
+        @Html.Raw(Model.PageBodyColumn3)
+    </div>
+@if (Model.SystemName == "contact")
+             { //only render contact form if its the contact page. 
+        <div class="contact-form">
+            @Html.Partial("_contact", new contactus())
+        </div>
+    }            
+    </div>
+  </div>
+
+

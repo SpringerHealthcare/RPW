@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/SMARTservice" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SMARTservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://10.72.132.141:8080/RPWServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="PubMedSummaryResultsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueryKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebEnv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PubMedSummaryResultsType" nillable="true" type="tns:PubMedSummaryResultsType" />
+  <xs:complexType name="PubMedFullResultsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contentTypeResults" nillable="true" type="tns:ArrayOfPubMedArticleType" />
+      <xs:element minOccurs="0" name="numResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PubMedFullResultsType" nillable="true" type="tns:PubMedFullResultsType" />
+  <xs:complexType name="ArrayOfPubMedArticleType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PubMedArticleType" nillable="true" type="tns:PubMedArticleType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPubMedArticleType" nillable="true" type="tns:ArrayOfPubMedArticleType" />
+  <xs:complexType name="PubMedArticleType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PMID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="abstractText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="articleTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="authors" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="journalTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="publicationDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PubMedArticleType" nillable="true" type="tns:PubMedArticleType" />
+  <xs:complexType name="ErrorMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+      <xs:element minOccurs="0" name="errorDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorMessage" nillable="true" type="tns:ErrorMessage" />
+  <xs:complexType name="ArticleType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PDFlink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="abstractText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="articleId" type="xs:int" />
+      <xs:element minOccurs="0" name="articleTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="authors" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="citation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="journalTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="keySentence" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="publicationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="reprintOpprtunityId" type="xs:int" />
+      <xs:element minOccurs="0" name="therapyArea" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArticleType" nillable="true" type="tns:ArticleType" />
+  <xs:complexType name="SavedSearchType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="articleTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="citation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="device" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="doi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="drug" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fromDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="indication" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="journalTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="manufacturer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="productType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pubmedId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="searchDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="searchId" type="ser:guid" />
+      <xs:element minOccurs="0" name="searchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="searchTerm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sortOrder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sponsoredBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="therapyArea" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="toDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SavedSearchType" nillable="true" type="tns:SavedSearchType" />
+  <xs:complexType name="AccountType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="areasOfInterest" nillable="true" type="tns:ArrayOfTermType" />
+      <xs:element minOccurs="0" name="contentAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="emailService" type="xs:boolean" />
+      <xs:element minOccurs="0" name="firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="jobTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="organisation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="processStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="telephone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" type="xs:int" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountType" nillable="true" type="tns:AccountType" />
+  <xs:complexType name="ArrayOfTermType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TermType" nillable="true" type="tns:TermType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTermType" nillable="true" type="tns:ArrayOfTermType" />
+  <xs:complexType name="TermType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qualifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="term" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TermType" nillable="true" type="tns:TermType" />
+  <xs:complexType name="FullResultsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contentTypeResults" nillable="true" type="tns:ArrayOfArticleType" />
+      <xs:element minOccurs="0" name="numResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FullResultsType" nillable="true" type="tns:FullResultsType" />
+  <xs:complexType name="ArrayOfArticleType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArticleType" nillable="true" type="tns:ArticleType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArticleType" nillable="true" type="tns:ArrayOfArticleType" />
+  <xs:complexType name="SavedSearchesType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numResults" type="xs:int" />
+      <xs:element minOccurs="0" name="savedSearchResults" nillable="true" type="tns:ArrayOfSavedSearchType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SavedSearchesType" nillable="true" type="tns:SavedSearchesType" />
+  <xs:complexType name="ArrayOfSavedSearchType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SavedSearchType" nillable="true" type="tns:SavedSearchType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSavedSearchType" nillable="true" type="tns:ArrayOfSavedSearchType" />
+  <xs:complexType name="ArrayOfContentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContentType" nillable="true" type="tns:ContentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContentType" nillable="true" type="tns:ArrayOfContentType" />
+  <xs:complexType name="ContentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="numResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContentType" nillable="true" type="tns:ContentType" />
+  <xs:complexType name="ArrayOfQuoteRequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QuoteRequestType" nillable="true" type="tns:QuoteRequestType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuoteRequestType" nillable="true" type="tns:ArrayOfQuoteRequestType" />
+  <xs:complexType name="QuoteRequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="articleId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="destinationCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="englishLanguage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="pubmedId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="quantities" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="quoteForEprints" type="xs:boolean" />
+      <xs:element minOccurs="0" name="quoteForReprints" type="xs:boolean" />
+      <xs:element minOccurs="0" name="quoteWithCovers" type="xs:boolean" />
+      <xs:element minOccurs="0" name="quoteWithoutCovers" type="xs:boolean" />
+      <xs:element minOccurs="0" name="specialRequirements" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="translated" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuoteRequestType" nillable="true" type="tns:QuoteRequestType" />
+  <xs:complexType name="ContactUsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="enquiry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="telephone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactUsType" nillable="true" type="tns:ContactUsType" />
+</xs:schema>

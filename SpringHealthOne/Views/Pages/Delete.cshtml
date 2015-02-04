@@ -1,0 +1,60 @@
+﻿@model SpringHealthOne.Models.Page
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Page</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PageBody)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PageBody)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MetaTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MetaTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MetaDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MetaDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Keywords)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Keywords)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Published)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Published)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

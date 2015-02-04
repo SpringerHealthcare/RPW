@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SpringHealthOne.Models.MenuItem>
+@using SpringHealthOne.Helpers
+@using SpringHealthOne.Models
+
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    <ul class="menu">
+        
+    @foreach (var item in Model)
+    {
+        if (String.IsNullOrEmpty(item.URL))
+        {
+            @Html.Raw("<li class='staticMenuItem'>") @item.Label;
+        }
+        else
+        {
+            if (item.URL.Contains("http"))
+            {
+                @Html.Raw("<li class='externalListItem'><a href='")@item.URL @Html.Raw("'>")@item.Label@Html.Raw("</a>")
+            }
+            else
+            {
+                @Html.Raw("<li>")@Html.RouteLink(item.Label, item.Label.Replace(" ","-").ToLower())
+            }
+        }
+
+        if (item.Children.Count() > 0)
+        {
+            @Html.Raw("<ul class='subMenu'>")
+
+                foreach (var subItem in item.Children)
+                {
+                    if (String.IsNullOrEmpty(subItem.URL))
+                    {
+                    <li class="staticMenuItem">@subItem.Label</li>
+                    }
+                    else
+                    {
+                        if (subItem.URL.Contains("http"))
+                        {
+                    <li class="externalListItem"><a href="@subItem.URL">@subItem.Label</a></li>
+                        }
+                        else
+                        {
+                            <li>@Html.RouteLink(subItem.Label, item.Label.Replace(" ","-").ToLower())</li>
+                        }
+                    }
+                }
+            @Html.Raw("</ul>")
+        }
+        @Html.Raw("</li>")
+    }
+    </ul>
+}

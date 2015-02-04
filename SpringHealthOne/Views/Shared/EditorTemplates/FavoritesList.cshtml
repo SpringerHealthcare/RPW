@@ -1,0 +1,66 @@
+﻿@model List<SpringHealthOne.Models.SearchResults>
+@foreach(var item in Model){
+<div class="article-box article-box">
+        <div class="article-title">
+            <a href="javascript:showhide(@item.articleId);">
+                <h3>
+                    @item.articleTitle
+                    <input type="hidden" name="articleTitle" value="@item.articleTitle" />
+                </h3>
+            </a>
+        </div>    
+        <div class="article-keysent" >
+            @item.keySentence
+            <input type="hidden" name="keySentence" value="@item.keySentence" />
+        </div>    
+        <div class="expand-container" id="expand-@item.articleId">
+            <input type="hidden" name="articleId" value="@item.articleId" />
+            <div class="article-author">
+                <div class="result-sub">Authors:</div><div class="result-content">@item.authors</div>
+                <input type="hidden" name="authors" value="@item.authors" />
+                <div class="clear"></div>
+            </div>
+            <div class="article-pubdate">
+                <div class="result-sub">Publication date:</div><div class="result-content">@item.publicationDate</div>
+                <input type="hidden" name="publicationDate" value="@item.publicationDate" />
+                <div class="clear"></div>
+            </div>
+            <div class="article-citation">
+                <div class="result-sub">PMID:</div><div class="result-content">@item.citation</div>
+                <input type="hidden" name="citation" value="@item.citation" />
+                <div class="clear"></div>
+            </div>
+        
+            <div class="article-abstract">
+                <div class="result-sub">Abstract:</div><div class="result-content">@item.abstractText</div>
+                <input type="hidden" name="abstractText" value="@item.abstractText" />
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        <div class="article-nav">
+            <div class="article-nav-inner-bg"></div>
+            <div class="article-nav-inner">
+                <div class="article-expand">
+                    <div id="article-epand"><a href="javascript:showhide(@item.articleId);">More Information</a></div>
+                </div>
+                <div class="article-viewpdf">
+                    @if(item.PDFlink != null){
+                        <a href="http://@item.PDFlink" target="_blank">View PDF</a>
+                    } else {
+                        <a href="/Pages/Details/5" target="_blank">Contact us</a>
+                    }
+                </div>
+                <div class="quote-chk">
+                    <input type="checkbox" id="quote-@item.articleId" name="quote" class="quote-btn" value="@item.articleId,@item.articleTitle"><label for="quote-@item.articleId"><span></span> Request Quote</label>
+                </div>
+                <div class="favorite-chk">
+                    <input type="checkbox" id="removefavorite-@item.articleId" name="removefavorite" class="fav-btn" value="@item.reprintOpprtunityId"><label for="removefavorite-@item.articleId"><span></span> Remove favourite</label>
+                </div>
+                    @Html.Hidden("totalpages", item.totalpages)
+            </div>
+
+        </div>
+    </div>
+}

@@ -1,0 +1,22 @@
+﻿@using SpringHealthOne.SpringWS
+@model SpringHealthOne.Models.requestQuoteList
+@{
+    ViewBag.Title = "RequestQuote";
+}
+<div id="quote-container">
+        <div id="quote-inner">
+            <h1>Quote Options</h1>
+            (Content below is copied from your selections in the search results page.)
+            @using (Html.BeginForm("submitQuote", "Home", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+            {
+                <p>
+                  <input type="submit" value="Request A Quote" class="update" />
+                </p>
+                @Html.EditorFor(model => model.requestQuotes)
+                <p>
+                  <input type="submit" value="Request A Quote" class="update" />
+                </p>
+            }
+             <div class="clear"></div>
+    </div>
+</div>

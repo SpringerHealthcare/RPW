@@ -1,0 +1,208 @@
+﻿@using SpringHealthOne.SpringWS
+@using SpringHealthOne.Models
+@model SpringHealthOne.Models.SearchResultsList
+@{
+    ViewBag.Title = "Search Results";
+    Search search = new Search();
+}
+@if (TempData["noresults"] == null && Model.SearchResultObjList.Count()>0)
+{
+<div id="refine">
+    <div id="refine-inner">
+        <h2>Refine Search:</h2>
+        <div class="refine-head producttype-head">
+            <h5 id="type-product">Product Type</h5>
+             @if(Model.SearchRefineObjList.ProductType!=null){
+            <ul id="type-product-list">
+               
+            @for (var i = 0; Model.SearchRefineObjList.ProductType.Count() > i; i++)
+            {
+                <li>
+                    <div class="refine-link">
+                        @if (@Model.SearchResultObjList[0].freetext == null)
+                        {
+                            Model.SearchResultObjList[0].freetext = Model.SearchResultObjList[0].drug;
+                        }
+                        @Html.ActionLink(@Model.SearchRefineObjList.ProductType[i], "Search", "Home", new Search{ freetext = @Model.SearchResultObjList[0].freetext, prodtype = @Model.SearchRefineObjList.ProductType[i], advanced = true}, null)
+                    </div>
+                    <div class="refine-count">
+                        (@Model.SearchRefineObjList.ProductTypecount[i])
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            }
+            </ul>
+             }
+            <h5>Publication Dates</h5>
+            <div class="pubdates-outer">
+                @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+                {
+                    <div class="pubdates-inner">
+                        <div class="pubdates-from">
+                            @Html.Label("From:")
+                            @Html.DropDownList("ForMonth", search.getMonths())
+                            @Html.DropDownList("ForYears", search.getYears())
+                        </div>
+                        <div class="pubdates-to">
+                            @Html.Label("to")
+                            @Html.DropDownList("ToMonth", search.getMonths(true))
+                            @Html.DropDownList("ToYears", search.getYears(true))
+                            @if(@Model.SearchResultObjList.Count()>0){
+                            @Html.Hidden("freetext", @Model.SearchResultObjList[0].freetext)
+                            }
+                            else{
+                                @Html.Hidden("freetext", "")
+                            }
+                            @Html.Hidden("advanced", true)
+                        </div>
+                    </div>
+                    <input type="submit" value="Go" class="go" />
+                }
+            </div>
+            <h5 id="type-journal">Journal</h5>
+            @if(Model.SearchRefineObjList.Journal!=null){
+            <ul id="type-journal-list">
+                @for (var i = 0; Model.SearchRefineObjList.Journal.Count() > i; i++)
+                    {
+
+                        if (i > 3)
+                        {
+                            <li style="display:none;">
+                                <div class="refine-link">
+                                    @Html.ActionLink(@Model.SearchRefineObjList.Journal[i], "Search", "Home", new Search{ freetext = @Model.SearchResultObjList[0].freetext, Journal = @Model.SearchRefineObjList.Journal[i], advanced = true}, null)
+                                </div>
+                                <div class="refine-count">
+                                    (@Model.SearchRefineObjList.Journalcount[i])
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <div class="refine-link">
+                                    @Html.ActionLink(@Model.SearchRefineObjList.Journal[i], "Search", "Home", new Search{ freetext = @Model.SearchResultObjList[0].freetext, Journal = @Model.SearchRefineObjList.Journal[i], advanced = true}, null)
+                                </div>
+                                <div class="refine-count">
+                                    (@Model.SearchRefineObjList.Journalcount[i])
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        }
+
+                        if ( Model.SearchRefineObjList.Journal.Count()-1==i && Model.SearchRefineObjList.Journal.Count() > 4 )
+                        {
+                            <div id="type-journal-list-more" class="more">more...</div>
+                        }
+                    }
+            </ul>   
+            }         
+            <h5 id="type-therapy">Therapy Area</h5>
+            @if(Model.SearchRefineObjList.TheropyArea!=null){
+            <ul id="type-therapy-list">
+                @for (var i = 0; Model.SearchRefineObjList.TheropyArea.Count() > i; i++)
+                    {
+                        if (i > 3)
+                        {
+                        <li style="display:none;">                    
+                             @{
+                                if (@Model.SearchRefineObjList.TheropyArea[i] != "")
+                                {
+                                    <div class="refine-link">
+                                        @Html.ActionLink(@Model.SearchRefineObjList.TheropyArea[i], "Search", "Home", new Search{ freetext = @Model.SearchResultObjList[0].freetext, therapy = @Model.SearchRefineObjList.TheropyArea[i], advanced = true}, null)    
+                                    </div>
+                                    <div class="refine-count">
+                                        (@Model.SearchRefineObjList.TheropyAreacount[i])
+                                    </div>
+                                }
+                            }
+                            <div class="clear"></div>
+                        </li>
+                        }
+                        else
+                        {
+                        <li>                    
+                             @{
+                                if (@Model.SearchRefineObjList.TheropyArea[i] != "")
+                                {
+                                    <div class="refine-link">
+                                        @Html.ActionLink(@Model.SearchRefineObjList.TheropyArea[i], "Search", "Home", new Search{ freetext = @Model.SearchResultObjList[0].freetext, therapy = @Model.SearchRefineObjList.TheropyArea[i], advanced = true}, null)    
+                                    </div>
+                                    <div class="refine-count">
+                                        (@Model.SearchRefineObjList.TheropyAreacount[i])
+                                    </div>
+                                }
+                            }
+                            <div class="clear"></div>
+                        </li>
+                        }
+
+                        if ( Model.SearchRefineObjList.TheropyArea.Count()-1==i && Model.SearchRefineObjList.TheropyArea.Count() >4  )
+                        {
+                            <div id="type-therapy-list-more" class="more">more...</div>
+                        }
+                    }
+
+            </ul>
+            }
+        </div>
+    </div>
+</div>
+<div id="results-container">
+    @if(Model.SearchResultObjList.Count()>0){
+    if (!String.IsNullOrEmpty(Model.SearchResultObjList[0].resultsText) || 
+        !String.IsNullOrEmpty(Model.SearchResultObjList[0].freetext))
+    {
+        if (String.IsNullOrEmpty(Model.SearchResultObjList[0].freetext))
+        {
+        <h2>Results for '@Model.SearchResultObjList[0].resultsText'</h2>
+    }
+    else
+    {
+             <h2>Results for '@Model.SearchResultObjList[0].freetext'</h2>
+        }
+    } else {
+        <h2>Results for '@Model.SearchResultObjList[0].drug'</h2>
+    }
+    <div class="totalresults">@Model.SearchResultObjList[0].totalresults Results Found</div>
+    <div class="Search Results"><a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=1&freetext=@Model.SearchResultObjList[0].freetext">&lt;&lt;First</a><a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=@Model.SearchResultObjList[0].lastpage&freetext=@Model.SearchResultObjList[0].freetext">&lt;Prev</a> Page @Model.SearchResultObjList[0].currentpage of @Model.SearchResultObjList[0].totalpages<a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=@Model.SearchResultObjList[0].nextpage&freetext=@Model.SearchResultObjList[0].freetext" style="padding-left:10px;">Next&gt;</a><a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=@Model.SearchResultObjList[0].totalpages&freetext=@Model.SearchResultObjList[0].freetext">Last&gt;&gt;</a></div>
+    <div id="savesearchform" class="save-search" style="display:none;">
+        
+        @using (Html.BeginForm("saveSearch", "Home", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+        {   
+            @Html.ValidationSummary(true)
+            <label for="searchName">Search Name: </label>
+            @Html.TextBox("searchName");
+            @Html.Hidden("searchId", @Model.SearchResultObjList[0].searchId, new { @id = "savedsearchid" })
+            @Html.Hidden("Page", @Model.SearchResultObjList[0].currentpage, new { @id = "currentpagehidden" })
+            @Html.Hidden("freetext", @Model.SearchResultObjList[0].freetext, new { @id = "freetexthidden" })
+            <input type="submit" value="Save" class="save" />
+    }
+    </div>
+    <form action="" method="post">
+          <input type="submit" name="action:requestQuote" value="Request A Quote" class="quote-button" />
+          <input type="submit" name="action:submitFave" value="Add to Favourites" class="fav-button" />
+          <div id="savesearchbtn" class="button">Save Search</div>
+          
+          <input type="hidden" id="hiddensearchid" name="searchid" value="@Model.SearchResultObjList[0].searchId" />
+        @Html.EditorFor(model => model.SearchResultObjList)
+        <p>
+          <input type="submit" name="action:requestQuote" value="Request A Quote" class="update" />
+          <input type="submit" name="action:submitFave" value="Add to Favourites" class="update" />
+        </p>
+    </form>
+    <div class="Search Results"><a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=1&freetext=@Model.SearchResultObjList[0].freetext">&lt;&lt;First</a><a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=@Model.SearchResultObjList[0].lastpage&freetext=@Model.SearchResultObjList[0].freetext">&lt;Prev</a> Page @Model.SearchResultObjList[0].currentpage of @Model.SearchResultObjList[0].totalpages<a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=@Model.SearchResultObjList[0].nextpage&freetext=@Model.SearchResultObjList[0].freetext" style="padding-left:10px;">Next&gt;</a><a href="/Home/Search?search_id=@Model.SearchResultObjList[0].searchId&Page=@Model.SearchResultObjList[0].totalpages&freetext=@Model.SearchResultObjList[0].freetext">Last&gt;&gt;</a></div>
+    }
+</div>
+    <div class="pubmedtext">Can't find the article you are looking for? Search the <a href="/Home/pubmed?search_id=@Model.SearchResultObjList[0].searchId&Page=1"><img src="/content/themes/base/images/springer-pubmed.png" alt="pubMed"></a> instead.</div>
+} else {
+    <div class="no-results">
+        @TempData["noresults"]
+    </div>
+    <div class="advanced-search-again">
+        @if (TempData["noresultssearchid"] != null)
+        {
+            <a href="/Home/AdvancedSearch?search_id=@TempData["noresultssearchid"]">Back to Search</a>
+        }
+    </div>
+}

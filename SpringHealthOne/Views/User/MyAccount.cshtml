@@ -1,0 +1,177 @@
+﻿@using SpringHealthOne.SpringWS;
+@using SpringHealthOne.Models;
+@model SpringHealthOne.Models.MyAccount
+@{
+    ViewBag.Title = "MyAccount";
+}
+
+<h1>Account</h1>
+<p style="padding: 0 20px;">
+    This website is for pharmaceutical industry professionals only. All applications for membership will be assessed on an individual basis, to ensure the highest possible level of service for members. Registrations are usually approved within one or two working days. If you have any queries please contact the
+    <script type="text/javascript">
+        //<![CDATA[
+        <!--
+        var x="function f(x){var i,o=\"\",l=x.length;for(i=l-1;i>=0;i--) {try{o+=x.c" +
+        "harAt(i);}catch(e){}}return o;}f(\")\\\"function f(x,y){var i,o=\\\"\\\\\\\""+
+        "\\\\,l=x.length;for(i=0;i<l;i++){if(i<72)y++;y%=127;o+=String.fromCharCode(" +
+        "x.charCodeAt(i)^(y++));}return o;}f(\\\"\\\\-$.:<6;#w,/6\\\\\\\\025\\\\\\\\" +
+        "006\\\\\\\\t\\\\\\\\tAIQ\\\\\\\\016Q\\\\\\\\033\\\\\\\\007\\\\\\\\022\\\\\\" +
+        "\\037F!\\\\\\\\\\\"\\\\oeod~c4xwubp\\\\\\\\177n0TJKTF^C@pADDQT[[2l')%q\\\\\\"+
+        "\\016+>|\\\\\\\\022$971(\\\\\\\\034..-\\\\\\\\t\\\\\\\\017\\\\\\\\005\\\\\\" +
+        "\\006\\\\\\\\026K\\\\\\\\005\\\\\\\\010\\\\\\\\005R\\\\\\\\034\\\\\\\\002\\" +
+        "\\\\\\017\\\\\\\\031\\\\\\\\001\\\\\\\\035\\\\\\\\031\\\\\\\\020\\\\\\\\\\\\"+
+        "\\\\\\\\\\\\004\\\\\\\\021\\\\\\\\020\\\\\\\\035\\\\\\\\0048\\\\\\\\n\\\\\\" +
+        "\\n\\\\\\\\t\\\\\\\\025\\\\\\\\023\\\\\\\\031es,`khZ%(}c\\\\\\\\177`h3S2pv~" +
+        "}{\\\\\\\\177dlk{osoB=\\\\\\\\036@FNMKOT\\\\\\\\\\\\\\\\[K_C_\\\\\\\\022\\\\"+
+        "\\\\000Q\\\\\\\\017\\\\\\\\020\\\\\\\\032\\\\\\\\017\\\\\\\\005\\\\\\\\r\\\""+
+        "\\\\,72)\\\"(f};)lo,0(rtsbus.o nruter};)i(tArahc.x=+o{)--i;0=>i;1-l=i(rof}}" +
+        "{)e(hctac};l=+l;x=+x{yrt{)84=!)31/l(tAedoCrahc.x(elihw;lo=l,htgnel.x=lo,\\\""+
+        "\\\"=o,i rav{)x(f noitcnuf\")"                                               ;
+        while(x=eval(x));
+        //-->
+        //]]>
+    </script>
+    .
+</p>
+<div id="account-menu">
+    <ul>
+        <li><a href="/User/MyAccount" class="active">Personal Information</a></li>
+        <li><a href="/User/ChangePassword">Change Password</a></li>
+        <li><a href="/User/Favourites">Favourites</a></li>
+        <li><a href="/User/SavedSearch">Saved Searches</a></li>
+    </ul>
+</div>
+<div id="account-container">
+    <div id="account-inner">
+        @using (Html.BeginForm("MyAccount", "User", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+        {
+            <div class="left">
+                <label for="firstname">First Name: </label>
+                @Html.TextBox("firstname", Model.firstname)
+                @Html.ValidationMessage("firstname")
+                <label for="lastname">Last Name: </label>
+                @Html.TextBox("lastname", Model.lastname)
+                @Html.ValidationMessage("lastname")
+                <label for="email">Email: </label>
+                @Html.TextBox("email", Model.email)
+                @Html.ValidationMessage("email")
+                <label for="organization">Organization: </label>
+                @Html.TextBox("organization", Model.organization)
+                @Html.ValidationMessage("organization")
+                <label for="jobtitle">Job Title: </label>
+                @Html.TextBox("jobtitle", Model.jobtitle)
+                @Html.ValidationMessage("jobtitle")
+                <label for="address">Address: </label>
+                @Html.TextArea("address", Model.address)
+                @Html.ValidationMessage("address")
+                <label for="country">Country: </label>
+                @Html.DropDownList("country", Model.DropDownItems)
+                @Html.ValidationMessage("country")
+                <label for="number">Number: </label>
+                @Html.TextBox("number", Model.number)
+                @Html.ValidationMessage("number")
+                <div class="optin">
+                    @Html.CheckBoxFor(m => m.sales)
+                    @*<input type="checkbox" name="sales" value="@Model.sales" checked="@Model.sales">*@
+                    <label for="sales">Upon successful registration, a sales representative will be in touch to determine your specific areas of interest. This will be used to send you a weekly targeted email alert of relevant new content. If you would like to opt out of this service, please uncheck this box.</label>
+                </div>
+                @Html.ValidationMessage("sales")
+            </div>
+            <div class="right">
+                <div class="">
+                    <h3>My Areas of Interest</h3>
+                    <p>
+                        Currently selected:
+                    </p>
+                    @for (var i = 0; i < Model.data.Count(); i++)
+                    {
+                        <div class="termname">
+                            @Model.data[i].term
+                            @Html.CheckBoxFor(model => model.data[i].remove)
+                            @Html.Label("Remove")
+                            @Html.HiddenFor(model => model.data[i].term)
+                            @Html.HiddenFor(model => model.data[i].qualifier)
+                        </div>
+                    }
+                    <br />
+                    <br />
+                    @Html.Label("Add further drugs, indications, devices or manufacturers to my Areas of Interest:")
+                    @Html.TextBox("addterm")
+                    <div class="linkedterm">
+                       
+                        <input type="button" value="ADD LINKED TERM" class="update" id="showlinkedterm" /><img src="~/Images/question-mark-icon.png" style="background-color:#e1e1e1;" id="question" title ="" />
+                        <div id="questionpop">Click here to link two terms together and add as a single area of interest. Eg. Drug AND Indication.</div>
+                    
+                     @Html.TextBox("linkedterm", "", new { style = "display:none" })
+                    </div>
+                    <p>
+                        <input type="submit" value="Update" class="update" />
+                    </p>
+                  
+                </div>
+            </div>
+            <div class="clear"></div>
+            <a href="/User/DeactivateAccount" id="DeactivateConfirm" onclick="return confirm('You are about to deactivate your reprintsWarehouse.com account. You will no longer receive the weekly targeted email alert containing newly published content. Please confirm that you wish to proceed with this deactivation')">Deactivate Account</a>
+            @*
+           
+            <div id="deactivateDialog">		
+	</div>*@
+            <p>
+                <input type="submit" value="Update Details" class="update" />
+            </p>
+        }
+        <div class="clear"></div>
+    </div>
+</div>
+@section scripts{
+  
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#addterm').autocomplete({
+                source: '@Url.Action("AddTermAuto")',
+                minLength: 3
+            });
+            $('#linkedterm').autocomplete({
+                source: '@Url.Action("AddTermAuto")',
+                 minLength: 3
+            });
+            $('#showlinkedterm').click(function(){
+                $('#linkedterm').toggle();
+            });
+            $('#question').mouseover(function() {
+                $('#questionpop').show();
+            });
+            $('#question').mouseout(function() {
+                $('#questionpop').hide();
+            });
+
+        })
+    </script>
+   @* <script>
+        $(document).ready(function() {
+            $(function() {
+                $("#deactivateDialog").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    dialogClass: "dlg-no-close dlg-no-title",
+                buttons: {
+                    "Yes": function() {
+                        $(this).dialog("close");
+                    },
+                    "No": function() {
+                        $(this).dialog("close");
+                    }
+                }
+                });
+                $("#testConfirm").on("click", function(e) {
+                    e.preventDefault();
+                    $("#deactivateDialog").dialog("open");
+                });
+            });
+        });
+       
+    </script>*@
+
+}

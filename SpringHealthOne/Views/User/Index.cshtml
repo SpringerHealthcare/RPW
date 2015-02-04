@@ -1,0 +1,94 @@
+﻿@using SpringHealthOne.Models;
+@using SpringHealthOne.SpringWS;
+@model SpringHealthOne.Models.RegistrationUserModel
+@{
+    ViewBag.Title = "Index";
+    string display = "block";
+    if (ViewBag.DisplayItems != null)
+    {
+        display = (ViewBag.DisplayItems) ? "block" : "none";
+    }
+ 
+
+}
+
+
+<h1>Registration</h1>
+<p>@Html.ValidationSummary("Problem")</p>
+ 
+<div id="account-container" style="display:@display;">
+    <div id="account-inner">
+        @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-inline filter-form clearfix" }))
+        {
+            <div class="col-2">
+                <label for="firstname">First Name: @Html.ValidationMessage("firstname", "required field")</label>
+               @Html.TextBox("firstname", Model.firstname, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                 <label for="lastname">Last Name: @Html.ValidationMessage("lastname", "required field")</label>
+                 @Html.TextBox("lastname", Model.lastname, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="email">Email: @Html.ValidationMessage("email", "required field")</label>
+                @Html.TextBox("email", Model.email, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="organization">Organization: @Html.ValidationMessage("organization", "required field")</label>
+                @Html.TextBox("organization", Model.organization, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="jobtitle">Job Title: @Html.ValidationMessage("jobtitle", "required field")</label>
+                @Html.TextBox("jobtitle", Model.jobtitle, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="address">Address: @Html.ValidationMessage("address", "required field")</label>
+                @Html.TextArea("address", Model.address, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="country">Country: @Html.ValidationMessage("country", "required field")</label>
+                @Html.DropDownList("country", Model.DropDownItems, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="number">Phone Number: @Html.ValidationMessage("number", "required field")</label>
+                @Html.TextBox("number", Model.number, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="password">Password: @Html.ValidationMessage("password", "required field")</label>
+                @Html.Password("password", Model.password, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <label for="confirm">Confirm Password: @Html.ValidationMessage("confirm", "required field")</label>
+                @Html.Password("confirm", Model.confirm, new { style = "display:"+display+";" })
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="tandc" value="true" style="float: left; width: auto; margin: 0 20px 15px 0;" />
+                <label for="tandc" class="checkbox-label">I agree to the Terms & Conditions as outlines above, relating to the registration of an account on the ReprintsWarehouse website.</label><div class="required">*</div>
+                @Html.ValidationMessage("tandc")
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="sales" value="true" checked style="float: left; width: auto; margin: 0 20px 15px 0;" />
+                <label for="sales" class="checkbox-label">Upon successful registration, a sales representative will be in touch to determine your specific areas of interest. This will be used to send you a weekly targeted email alert of relevant new content. If you would like to opt out of this service, please uncheck this box.</label>
+                @Html.ValidationMessage("sales")
+            </div>
+             <div class="clear"></div>
+            <p>
+ 
+              <input type="submit" value="Register Now" class="update" />
+            </p>
+        }
+    </div>
+</div>
+   
+   
+@section scripts {
+                    @Scripts.Render("~/bundles/modernizr")
+                    @Scripts.Render("~/bundles/jqueryval")
+                    @Scripts.Render("~/bundles/jqueryui")
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#drug').autocomplete({
+                                source: '@Url.Action("AutoComplete")'
+                            });
+                        })
+                     </script>
+    }

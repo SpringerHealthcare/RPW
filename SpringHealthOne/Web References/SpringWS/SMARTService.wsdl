@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://smart.springer-mps.com/service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SMARTService" targetNamespace="http://smart.springer-mps.com/service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://smart.springer-mps.com/service/Imports">
+      <xsd:import schemaLocation="http://10.72.132.141:8080/RPWServices.svc?xsd=xsd0" namespace="http://smart.springer-mps.com/service" />
+      <xsd:import schemaLocation="http://10.72.132.141:8080/RPWServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SMARTservice" />
+      <xsd:import schemaLocation="http://10.72.132.141:8080/RPWServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://10.72.132.141:8080/RPWServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISMARTwebservice_PubMedSearchResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:PubMedSearchResults" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_PubMedSearchResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PubMedSearchResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_PubMedSearchResults_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q1:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetArticleDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArticleDetails" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetArticleDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetArticleDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetArticleDetails_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q2:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetASavedSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetASavedSearch" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetASavedSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetASavedSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetASavedSearch_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q3:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_AuthToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthToken" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_AuthToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_AuthToken_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q4:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Login_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q5:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_ForgottenLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ForgottenLogin" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_ForgottenLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ForgottenLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_ForgottenLogin_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q6:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_AccountExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:AccountExists" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_AccountExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AccountExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_AccountExists_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q7:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetAccountDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountDetails" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetAccountDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetAccountDetails_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q8:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_UpdateAccountDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountDetails" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_UpdateAccountDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_UpdateAccountDetails_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q9:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAccount" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertAccount_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q10:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeactivateAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateAccount" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeactivateAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeactivateAccount_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q11:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertFavourites_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertFavourites" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertFavourites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertFavouritesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertFavourites_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q12:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeleteFavourite_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFavourite" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeleteFavourite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFavouriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeleteFavourite_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q13:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetFavourites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFavourites" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetFavourites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFavouritesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetFavourites_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q14:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertSavedSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSavedSearch" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertSavedSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSavedSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertSavedSearch_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q15:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeleteSavedSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSavedSearch" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeleteSavedSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSavedSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_DeleteSavedSearch_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q16:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetSavedSearches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSavedSearches" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetSavedSearches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSavedSearchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetSavedSearches_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q17:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Drugs_InputMessage">
+    <wsdl:part name="parameters" element="tns:Drugs" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Drugs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DrugsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Drugs_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q18:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Journals_InputMessage">
+    <wsdl:part name="parameters" element="tns:Journals" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Journals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JournalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Journals_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q19:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Devices_InputMessage">
+    <wsdl:part name="parameters" element="tns:Devices" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Devices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Devices_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q20:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Indications_InputMessage">
+    <wsdl:part name="parameters" element="tns:Indications" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Indications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IndicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Indications_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q21:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_TherapyAreas_InputMessage">
+    <wsdl:part name="parameters" element="tns:TherapyAreas" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_TherapyAreas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TherapyAreasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_TherapyAreas_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q22:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Manufacturers_InputMessage">
+    <wsdl:part name="parameters" element="tns:Manufacturers" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Manufacturers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManufacturersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Manufacturers_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q23:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Countries_InputMessage">
+    <wsdl:part name="parameters" element="tns:Countries" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Countries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_Countries_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q24:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetBasicSearchSummaryResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBasicSearchSummaryResults" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetBasicSearchSummaryResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBasicSearchSummaryResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetBasicSearchSummaryResults_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q25:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetAdvancedSearchSummaryResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvancedSearchSummaryResults" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetAdvancedSearchSummaryResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvancedSearchSummaryResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetAdvancedSearchSummaryResults_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q26:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetLoggedOutSearchResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedOutSearchResults" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetLoggedOutSearchResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedOutSearchResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetLoggedOutSearchResults_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q27:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetLoggedInSearchResults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedInSearchResults" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetLoggedInSearchResults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedInSearchResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_GetLoggedInSearchResults_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q28:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertQuoteRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertQuoteRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertQuoteRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertQuoteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_InsertQuoteRequest_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q29:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_ContactUs_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContactUs" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_ContactUs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContactUsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_ContactUs_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q30:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_PubMedSearchSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:PubMedSearchSummary" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_PubMedSearchSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PubMedSearchSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISMARTwebservice_PubMedSearchSummary_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/SMARTservice" name="detail" element="q31:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:portType name="ISMARTwebservice">
+    <wsdl:operation name="PubMedSearchResults">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchResults" message="tns:ISMARTwebservice_PubMedSearchResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchResultsResponse" message="tns:ISMARTwebservice_PubMedSearchResults_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchResultsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_PubMedSearchResults_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleDetails">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetArticleDetails" message="tns:ISMARTwebservice_GetArticleDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetArticleDetailsResponse" message="tns:ISMARTwebservice_GetArticleDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetArticleDetailsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetArticleDetails_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetASavedSearch">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetASavedSearch" message="tns:ISMARTwebservice_GetASavedSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetASavedSearchResponse" message="tns:ISMARTwebservice_GetASavedSearch_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetASavedSearchErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetASavedSearch_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthToken">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/AuthToken" message="tns:ISMARTwebservice_AuthToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/AuthTokenResponse" message="tns:ISMARTwebservice_AuthToken_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/AuthTokenErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_AuthToken_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Login" message="tns:ISMARTwebservice_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/LoginResponse" message="tns:ISMARTwebservice_Login_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/LoginErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Login_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ForgottenLogin">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ForgottenLogin" message="tns:ISMARTwebservice_ForgottenLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ForgottenLoginResponse" message="tns:ISMARTwebservice_ForgottenLogin_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ForgottenLoginErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_ForgottenLogin_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountExists">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/AccountExists" message="tns:ISMARTwebservice_AccountExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/AccountExistsResponse" message="tns:ISMARTwebservice_AccountExists_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/AccountExistsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_AccountExists_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetAccountDetails" message="tns:ISMARTwebservice_GetAccountDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetAccountDetailsResponse" message="tns:ISMARTwebservice_GetAccountDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetAccountDetailsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetAccountDetails_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountDetails">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/UpdateAccountDetails" message="tns:ISMARTwebservice_UpdateAccountDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/UpdateAccountDetailsResponse" message="tns:ISMARTwebservice_UpdateAccountDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/UpdateAccountDetailsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_UpdateAccountDetails_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAccount">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertAccount" message="tns:ISMARTwebservice_InsertAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertAccountResponse" message="tns:ISMARTwebservice_InsertAccount_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertAccountErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_InsertAccount_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateAccount">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeactivateAccount" message="tns:ISMARTwebservice_DeactivateAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeactivateAccountResponse" message="tns:ISMARTwebservice_DeactivateAccount_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeactivateAccountErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_DeactivateAccount_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertFavourites">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertFavourites" message="tns:ISMARTwebservice_InsertFavourites_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertFavouritesResponse" message="tns:ISMARTwebservice_InsertFavourites_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertFavouritesErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_InsertFavourites_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFavourite">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteFavourite" message="tns:ISMARTwebservice_DeleteFavourite_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteFavouriteResponse" message="tns:ISMARTwebservice_DeleteFavourite_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteFavouriteErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_DeleteFavourite_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFavourites">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetFavourites" message="tns:ISMARTwebservice_GetFavourites_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetFavouritesResponse" message="tns:ISMARTwebservice_GetFavourites_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetFavouritesErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetFavourites_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSavedSearch">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertSavedSearch" message="tns:ISMARTwebservice_InsertSavedSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertSavedSearchResponse" message="tns:ISMARTwebservice_InsertSavedSearch_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertSavedSearchErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_InsertSavedSearch_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSavedSearch">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteSavedSearch" message="tns:ISMARTwebservice_DeleteSavedSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteSavedSearchResponse" message="tns:ISMARTwebservice_DeleteSavedSearch_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteSavedSearchErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_DeleteSavedSearch_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSavedSearches">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetSavedSearches" message="tns:ISMARTwebservice_GetSavedSearches_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetSavedSearchesResponse" message="tns:ISMARTwebservice_GetSavedSearches_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetSavedSearchesErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetSavedSearches_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Drugs">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Drugs" message="tns:ISMARTwebservice_Drugs_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DrugsResponse" message="tns:ISMARTwebservice_Drugs_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DrugsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Drugs_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Journals">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Journals" message="tns:ISMARTwebservice_Journals_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/JournalsResponse" message="tns:ISMARTwebservice_Journals_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/JournalsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Journals_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Devices">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Devices" message="tns:ISMARTwebservice_Devices_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DevicesResponse" message="tns:ISMARTwebservice_Devices_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/DevicesErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Devices_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Indications">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Indications" message="tns:ISMARTwebservice_Indications_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/IndicationsResponse" message="tns:ISMARTwebservice_Indications_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/IndicationsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Indications_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TherapyAreas">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/TherapyAreas" message="tns:ISMARTwebservice_TherapyAreas_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/TherapyAreasResponse" message="tns:ISMARTwebservice_TherapyAreas_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/TherapyAreasErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_TherapyAreas_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Manufacturers">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Manufacturers" message="tns:ISMARTwebservice_Manufacturers_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ManufacturersResponse" message="tns:ISMARTwebservice_Manufacturers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ManufacturersErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Manufacturers_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Countries">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/Countries" message="tns:ISMARTwebservice_Countries_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/CountriesResponse" message="tns:ISMARTwebservice_Countries_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/CountriesErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_Countries_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBasicSearchSummaryResults">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetBasicSearchSummaryResults" message="tns:ISMARTwebservice_GetBasicSearchSummaryResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetBasicSearchSummaryResultsResponse" message="tns:ISMARTwebservice_GetBasicSearchSummaryResults_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetBasicSearchSummaryResultsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetBasicSearchSummaryResults_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedSearchSummaryResults">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetAdvancedSearchSummaryResults" message="tns:ISMARTwebservice_GetAdvancedSearchSummaryResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetAdvancedSearchSummaryResultsResponse" message="tns:ISMARTwebservice_GetAdvancedSearchSummaryResults_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetAdvancedSearchSummaryResultsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetAdvancedSearchSummaryResults_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedOutSearchResults">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedOutSearchResults" message="tns:ISMARTwebservice_GetLoggedOutSearchResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedOutSearchResultsResponse" message="tns:ISMARTwebservice_GetLoggedOutSearchResults_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedOutSearchResultsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetLoggedOutSearchResults_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedInSearchResults">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedInSearchResults" message="tns:ISMARTwebservice_GetLoggedInSearchResults_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedInSearchResultsResponse" message="tns:ISMARTwebservice_GetLoggedInSearchResults_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedInSearchResultsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_GetLoggedInSearchResults_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertQuoteRequest">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertQuoteRequest" message="tns:ISMARTwebservice_InsertQuoteRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertQuoteRequestResponse" message="tns:ISMARTwebservice_InsertQuoteRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/InsertQuoteRequestErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_InsertQuoteRequest_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContactUs">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ContactUs" message="tns:ISMARTwebservice_ContactUs_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ContactUsResponse" message="tns:ISMARTwebservice_ContactUs_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/ContactUsErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_ContactUs_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PubMedSearchSummary">
+      <wsdl:input wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchSummary" message="tns:ISMARTwebservice_PubMedSearchSummary_InputMessage" />
+      <wsdl:output wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchSummaryResponse" message="tns:ISMARTwebservice_PubMedSearchSummary_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchSummaryErrorMessageFault" name="ErrorMessageFault" message="tns:ISMARTwebservice_PubMedSearchSummary_ErrorMessageFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISMARTwebservice" type="tns:ISMARTwebservice">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PubMedSearchResults">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetArticleDetails">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetArticleDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetASavedSearch">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetASavedSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AuthToken">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/AuthToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ForgottenLogin">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/ForgottenLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AccountExists">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/AccountExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountDetails">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetAccountDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountDetails">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/UpdateAccountDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAccount">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/InsertAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateAccount">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/DeactivateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertFavourites">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/InsertFavourites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFavourite">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteFavourite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFavourites">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetFavourites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSavedSearch">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/InsertSavedSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSavedSearch">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/DeleteSavedSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSavedSearches">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetSavedSearches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Drugs">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Drugs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Journals">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Journals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Devices">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Devices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Indications">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Indications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TherapyAreas">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/TherapyAreas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Manufacturers">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Manufacturers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Countries">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/Countries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBasicSearchSummaryResults">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetBasicSearchSummaryResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedSearchSummaryResults">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetAdvancedSearchSummaryResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedOutSearchResults">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedOutSearchResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedInSearchResults">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/GetLoggedInSearchResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertQuoteRequest">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/InsertQuoteRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ContactUs">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/ContactUs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PubMedSearchSummary">
+      <soap:operation soapAction="http://smart.springer-mps.com/service/ISMARTwebservice/PubMedSearchSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMARTService">
+    <wsdl:port name="BasicHttpBinding_ISMARTwebservice" binding="tns:BasicHttpBinding_ISMARTwebservice">
+      <soap:address location="http://10.72.132.141:8080/RPWServices.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

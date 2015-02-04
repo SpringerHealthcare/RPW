@@ -1,0 +1,98 @@
+﻿@using SpringHealthOne.SpringWS
+@model SpringHealthOne.Models.LoggedOutSearch
+@{
+    ViewBag.Title = "Search Results";
+}
+<div id="refine">
+    <div id="refine-inner">
+        <h2>Search Results:</h2>
+        <div class="refine-head">
+            <h5 id="type-product">Product Type</h5>
+            <ul id="type-product-list">
+                <li>
+                    <div class="refine-link">
+                        Journal Articles
+                    </div>
+                    <div class="refine-count">
+                        (@Html.DisplayFor(modelItem => Model.journel))
+                    </div>
+                    <div class="clear"></div>
+                </li>
+                <li>
+                    <div class="refine-link">
+                        Books
+                    </div>
+                    <div class="refine-count">
+                         (@Html.DisplayFor(modelItem => Model.books))
+                    </div>
+                    <div class="clear"></div>
+                </li>
+                <li>
+                    <div class="refine-link">
+                        Anatomical Charts
+                    </div>
+                    <div class="refine-count">
+                        (@Html.DisplayFor(modelItem => Model.anatomical))
+                    </div>
+                    <div class="clear"></div>
+                </li>
+                <li>
+                    <div class="refine-link">
+                        CME
+                    </div>
+                    <div class="refine-count">
+                       (@Html.DisplayFor(modelItem => Model.cme))
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="results-container">
+<div class="totalresults"><p>In order to view detailed results for the content matching your search, ether <a href="/User/Register">register a new account</a> or <a href="/User/Login?search=@Model.searchtext">login with your existing account details</a></p>
+<p>Your search returned a total of @Html.DisplayFor(modelItem => Model.total) results, as follows:</p></div>
+@foreach(var item in Model.LoggedOutResults){
+    //DateTime dt = Convert.ToDateTime(@item.Date);
+    //string pubdate = dt.ToString("dd-MM-yyyy");
+    string pubdate = item.Date;
+    <div class="article-box article-box">
+        <div class="article-title">
+            <a href="javascript:showhide(@item.articleId);">
+                <h3>
+                    @item.title
+                    <input type="hidden" name="articleTitle" value="@item.title" />
+                </h3>
+            </a>
+        </div>    
+        <div class="article-keysent" >
+            @item.keysent
+            <input type="hidden" name="keySentence" value="@item.keysent" />
+        </div>    
+        <div class="expand-container" id="expand-@item.articleId">
+            <input type="hidden" name="articleId" value="@item.articleId" />
+            <div class="article-author">
+                <div class="result-sub">Authors:</div><div class="result-content">@item.Authors</div>
+                <input type="hidden" name="authors" value="@item.Authors" />
+            </div>
+            <div class="article-journal">
+                <div class="result-sub">Journal:</div><div class="result-content">@item.Journalname</div>
+                <input type="hidden" name="journal" value="@item.Journalname" />
+            </div>
+            <div class="article-pubdate">
+                <div class="result-sub">Publication date:</div><div class="result-content">@pubdate</div>
+                <input type="hidden" name="publicationDate" value="@pubdate" />
+            </div>
+            <div class="article-citation">
+                <div class="result-sub">Citation:</div><div class="result-content">@item.Citation</div>
+                <input type="hidden" name="citation" value="@item.Citation" />
+            </div>
+        
+            <div class="article-abstract">
+                <div class="result-sub">Abstract:</div><div class="result-content">@item.Abstract</div>
+                <input type="hidden" name="abstractText" value="@item.Abstract" />
+            </div>
+        </div>
+    </div>
+}
+</div>

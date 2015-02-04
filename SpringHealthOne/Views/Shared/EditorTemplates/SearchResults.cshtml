@@ -1,0 +1,77 @@
+﻿@model SpringHealthOne.Models.SearchResults
+@{
+    //DateTime dt = Convert.ToDateTime(Model.publicationDate);
+    //string pubdate = dt.ToString("dd-MM-yyyy");
+    string pubdate = Model.publicationDate;
+}
+<div class="article-box article-box">
+        <div class="article-title">
+            <a href="javascript:showhide(@Model.articleId);">
+                <h3>
+                    @Model.articleTitle
+                    <input type="hidden" name="articleTitle" value="@Model.articleTitle" />
+                </h3>
+            </a>
+        </div>    
+        <div class="article-keysent" >
+            @Model.keySentence
+            <input type="hidden" name="keySentence" value="@Model.keySentence" />
+        </div>    
+        <div class="expand-container" id="expand-@Model.articleId">
+            <input type="hidden" name="articleId" value="@Model.articleId" />
+            <div class="article-author">
+                <div class="result-sub">Authors:</div><div class="result-content">@Model.authors</div>
+                <input type="hidden" name="authors" value="@Model.authors" />
+                <div class="clear"></div>
+            </div>
+            <div class="article-journal">
+                <div class="result-sub">Journal:</div><div class="result-content">@Model.journalTitle</div>
+                <input type="hidden" name="journal" value="@Model.journalTitle" />
+                <div class="clear"></div>
+            </div>
+            <div class="article-pubdate">
+                <div class="result-sub">Publication date:</div><div class="result-content">@pubdate</div>
+                <input type="hidden" name="publicationDate" value="@pubdate" />
+                <div class="clear"></div>
+            </div>
+            <div class="article-citation">
+                <div class="result-sub">Citation:</div><div class="result-content">@Model.citation</div>
+                <input type="hidden" name="citation" value="@Model.citation" />
+                <div class="clear"></div>
+            </div>
+        
+            <div class="article-abstract">
+                <div class="result-sub">Abstract:</div><div class="result-content">@Model.abstractText</div>
+                <input type="hidden" name="abstractText" value="@Model.abstractText" />
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        <div class="article-nav">
+            <div class="article-nav-inner-bg"></div>
+            <div class="article-nav-inner">
+                <div class="article-expand">
+                    <div id="article-epand"><a href="javascript:showhide(@Model.articleId);">More Information</a></div>
+                </div>
+                <div class="article-viewpdf">
+                    @if(Model.PDFlink != null){
+                        <a href="http://@Model.PDFlink" target="_blank">View PDF</a>
+                    } else {
+                        <a href="/Pages/Details/5" target="_blank">Contact us</a>
+                    }
+                    
+                </div>
+                
+                <div class="favorite-chk">
+                    <input id="favorite-@Model.articleId" type="checkbox" name="favorite" value="@Model.reprintOpprtunityId" class="fav-btn"><label for="favorite-@Model.articleId"><span></span>Favourite</label>
+                </div>
+
+                <div class="quote-chk">
+                    <input id="quote-@Model.articleId" type="checkbox" name="quote" value="@Model.articleId,@Model.articleTitle" class="quote-btn"><label for="quote-@Model.articleId"><span></span>Request Quote</label>
+                </div>
+                    @Html.HiddenFor(modelItem => modelItem.totalpages)
+            </div>
+
+        </div>
+    </div>
